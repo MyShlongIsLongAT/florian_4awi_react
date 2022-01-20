@@ -1,0 +1,16 @@
+{
+  "name": "installation",
+  "version": "1.0.0",
+  "description": "demo",
+  "main": "script.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "image-size": "^1.0.1",
+    "nstall": "^0.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
