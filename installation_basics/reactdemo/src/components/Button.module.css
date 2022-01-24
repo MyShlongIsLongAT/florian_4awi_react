@@ -1,0 +1,16 @@
+.button{
+    display:flex;
+    justify-content:center;
+}
+
+button{
+    background-color:#059862;
+    color:white;
+    width:100px;
+    height: 40px;
+    border:none;
+}
+
+button:hover{
+    background-color:#04AA6B;
+}

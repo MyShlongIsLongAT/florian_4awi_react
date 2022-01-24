@@ -1,0 +1,18 @@
+.List{
+    display: flex;
+    justify-content: center;
+}
+
+li{
+    color:white;
+    background-color:turquoise;
+    margin-bottom: 1px;
+    list-style: none;
+    width:100px;
+    text-align:left;
+    padding:10px;
+}
+
+li:hover{
+    background-color:aquamarine;
+}
