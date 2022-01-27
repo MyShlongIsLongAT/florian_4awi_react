@@ -8,10 +8,6 @@ class TaskAdder extends Component {
     };
   }
 
-  addTask = () => {
-    alert("adding");
-  };
-
   handleChange = (event) => {
     this.setState({
       inputValue: event.target.value
@@ -19,7 +15,7 @@ class TaskAdder extends Component {
   };
 
   addTask = () =>{
-    this.props.onAddTask(this.state.inputValue);
+    this.props.onTaskAdded(this.state.inputValue);
   }
 
   render() {

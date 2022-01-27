@@ -6,13 +6,22 @@ import styles from "./todo.module.css";
 class ToDo extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      id: this.props.id,
+    };
   }
+
+  removeTask = () => {
+    this.props.isDone(this.state.id);
+    alert("lol")
+  };
+
   render() {
     return (
       <div className={styles.container}>
         <div>{this.props.title}</div>
-        <div>{this.props.isDone}</div>
-        <div className={styles.icons}>
+        <div className={styles.icons} onClick={this.removeTask}>
           <GrClose />
         </div>
       </div>

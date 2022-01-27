@@ -9,36 +9,38 @@ class App extends Component {
     super(props);
 
     this.state = {
-      todos: [
-        {
-          id: 1,
-          name: "einkaufen",
-          done: false,
-        },
-        {
-          id: 2,
-          name: "putzen",
-          done: false,
-        },
-        {
-          id: 3,
-          name: "marlo nerven",
-          done: false,
-        },
-      ],
+      todos: []
     };
   }
 
-  addTask = (value) =>{
-    alert("adding task: " + value)
-  }
+  getRandomCharacter = () => {
+    return (Math.random() * (1000 - 1) + 1);
+  };
+
+  addTask = (value) => {
+    let todo = {
+      id: this.getRandomCharacter(),
+      name: value,
+      done: false,
+    };
+    let todos = this.state.todos;
+    todos.push(todo);
+
+    this.setState({
+      todos: todos,
+    });
+  };
+
+  removeTask = (id) => {
+    console.log(id)
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
-        <TaskAdder onTaskAdded={this.addTask}/>
-        <ToDoList todos={this.state.todos}/>
+        <TaskAdder onTaskAdded={this.addTask} />
+        <ToDoList todos={this.state.todos} onTaskRemoved={this.removeTask} />
       </div>
     );
   }
