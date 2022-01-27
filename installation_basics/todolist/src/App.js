@@ -32,6 +32,7 @@ class App extends Component {
   };
 
   removeTask = (id) => {
+    //edit for remove of task
     console.log(id)
   };
 

@@ -12,6 +12,7 @@ class ToDo extends Component {
     };
   }
 
+  //edit for remove of task
   removeTask = () => {
     this.props.isDone(this.state.id);
     alert("lol")
