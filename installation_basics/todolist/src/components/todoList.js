@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ToDo from "./todo";
+import ToDo from "./todo.js";
 import styles from "./todoList.module.css";
 
 class ToDoList extends Component {
@@ -7,19 +7,18 @@ class ToDoList extends Component {
     super(props);
   }
 
-  getAllTodos = () => {
+  getAllTodos(){
     let widgets = [];
-    this.props.todos.forEach((element) => {
-      widgets.push(<ToDo name={element.name} />);
+    this.props.todos.forEach((todo) => {
+      widgets.push(<ToDo title={todo.name} isDone={todo.done}/>);
     });
     return widgets;
   };
-
-  state = {};
+  
   render() {
     return (
       <div className={styles.center}>
-        <div className={styles.container}>{this.getAllTodos}</div>
+        <div className={styles.container}>{this.getAllTodos()}</div>
       </div>
     );
   }

@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 
 class TaskAdder extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ""
+    };
+  }
+
   addTask = () => {
     alert("adding");
   };
@@ -9,21 +16,12 @@ class TaskAdder extends Component {
     console.log("on input");
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: "",
-    };
-  }
-  state = {
-    inputValue: "",
-  };
   render() {
     return (
       <div>
         <input
           type="text"
-          value={this.state.inputValue}
+          defaultValue={this.state.inputValue}
           onChange={this.handleChange}
         />
         <button onClick={this.addTask}>Save</button>
