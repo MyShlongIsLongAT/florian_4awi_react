@@ -29,11 +29,15 @@ class App extends Component {
     };
   }
 
+  addTask = (value) =>{
+    alert("adding task: " + value)
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <TaskAdder/>
+        <TaskAdder onTaskAdded={this.addTask}/>
         <ToDoList todos={this.state.todos}/>
       </div>
     );

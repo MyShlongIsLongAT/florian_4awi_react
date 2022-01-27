@@ -12,16 +12,22 @@ class TaskAdder extends Component {
     alert("adding");
   };
 
-  handleChange = () => {
-    console.log("on input");
+  handleChange = (event) => {
+    this.setState({
+      inputValue: event.target.value
+    })
   };
+
+  addTask = () =>{
+    this.props.onAddTask(this.state.inputValue);
+  }
 
   render() {
     return (
       <div>
         <input
           type="text"
-          defaultValue={this.state.inputValue}
+          value={this.state.inputValue}
           onChange={this.handleChange}
         />
         <button onClick={this.addTask}>Save</button>
