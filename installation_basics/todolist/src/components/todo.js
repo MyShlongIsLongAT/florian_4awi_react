@@ -15,7 +15,6 @@ class ToDo extends Component {
   //edit for remove of task
   removeTask = () => {
     this.props.isDone(this.state.id);
-    alert("lol")
   };
 
   render() {
@@ -25,6 +24,7 @@ class ToDo extends Component {
         <div className={styles.icons} onClick={this.removeTask}>
           <GrClose />
         </div>
+        {console.log(this.state.id)}
       </div>
     );
   }

@@ -23,6 +23,7 @@ class App extends Component {
       name: value,
       done: false,
     };
+
     let todos = this.state.todos;
     todos.push(todo);
 
@@ -32,8 +33,16 @@ class App extends Component {
   };
 
   removeTask = (id) => {
-    //edit for remove of task
-    console.log(id)
+    let currentTodos = this.state.todos;
+
+    for (let i = 0; i < currentTodos.length; i++){
+      if (currentTodos[i].id == id){
+        delete currentTodos[i];
+      }
+    }
+    this.setState({
+      todos: currentTodos
+    });   
   };
 
   render() {
