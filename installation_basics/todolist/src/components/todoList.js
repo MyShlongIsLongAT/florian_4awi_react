@@ -14,7 +14,8 @@ class ToDoList extends Component {
   getAllTodos(){
     let widgets = [];
     this.props.todos.forEach((todo) => {
-      widgets.push(<ToDo title={todo.name} id={todo.id} isDone={this.removeTask}/>);
+      let currentId=todo.id;
+      widgets.push(<ToDo title={todo.name} currentId={currentId} isDone={this.removeTask}/>);
     });
     return widgets;
   };

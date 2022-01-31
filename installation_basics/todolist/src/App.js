@@ -13,13 +13,13 @@ class App extends Component {
     };
   }
 
-  getRandomCharacter = () => {
-    return (Math.random() * (1000 - 1) + 1);
+  generateTodoId = () => {
+    return this.state.todos.length;
   };
 
   addTask = (value) => {
     let todo = {
-      id: this.getRandomCharacter(),
+      id: this.generateTodoId(),
       name: value,
       done: false,
     };
@@ -36,7 +36,7 @@ class App extends Component {
     let currentTodos = this.state.todos;
 
     for (let i = 0; i < currentTodos.length; i++){
-      if (currentTodos[i].id == id){
+      if (currentTodos[i].id === id){
         delete currentTodos[i];
       }
     }

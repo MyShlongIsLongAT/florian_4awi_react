@@ -8,7 +8,7 @@ class ToDo extends Component {
     super(props);
 
     this.state = {
-      id: this.props.id,
+      id: this.props.currentId,
     };
   }
 
