@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       todos: [],
       existingIDs: [],
+      itemsRemoved:0
     };
   }
 
@@ -19,31 +20,41 @@ class App extends Component {
     let maxTodos = 10;
     let generatedId;
 
-    if (isNaN(this.state.existingIDs.length)){
+    if (isNaN(this.state.existingIDs.length)) {
       generatedId = 1;
-    } 
-    else {
+    } else {
       generatedId = this.state.existingIDs.length + 1;
     }
 
+    console.log(existingIdsCopy);
+
     if (generatedId > maxTodos) {
-      this.state.existingIDs.forEach(element => {
-        console.log(element);
-        //if (isNaN(element)){
-          //generatedId = element
-        //}
-      });
-      alert(
-        "You have reached the maximum of ToDos \n Please delete some of your tasks if you want to continue!"
-      );
-      return;
-    } else {
-      existingIdsCopy.push(generatedId);
-      this.setState({
-        existingIDs: existingIdsCopy,
-      });
-      return generatedId;
+      for (let i = 0; i < this.state.existingIDs.length; i++) {
+        if (isNaN(this.state.existingIDs[i].id)) {
+          generatedId = i + this.state.itemsRemoved;
+          existingIdsCopy.splice(i, 1);
+
+          this.setState({
+            itemsRemoved: this.state.itemsRemoved+1,
+          });
+          break;
+        }
+      }
+      if (generatedId > maxTodos) {
+        alert(
+          "You have reached the maximum of ToDos \n Please delete some of your tasks if you want to continue!"
+        );
+        return;
+      }
     }
+    let newId = {
+      id: generatedId,
+    };
+    existingIdsCopy.push(newId);
+    this.setState({
+      existingIDs: existingIdsCopy,
+    });
+    return generatedId;
   };
 
   addTask = (value) => {
@@ -53,7 +64,6 @@ class App extends Component {
       done: false,
     };
 
-    console.log(todo.id);
     let todos = this.state.todos;
     todos.push(todo);
     this.setState({
@@ -63,13 +73,23 @@ class App extends Component {
 
   removeTask = (id) => {
     let currentTodos = [...this.state.todos];
+    let existingIdsCopy = [...this.state.existingIDs];
+
     for (let i = 0; i < currentTodos.length; i++) {
       if (currentTodos[i].id === id) {
         currentTodos.splice(i, 1);
       }
     }
+
+    for (let i = 0; i < existingIdsCopy.length; i++) {
+      if (existingIdsCopy[i].id === id) {
+        existingIdsCopy[i].id = "done";
+      }
+    }
+
     this.setState({
       todos: currentTodos,
+      existingIDs: existingIdsCopy,
     });
   };
 
