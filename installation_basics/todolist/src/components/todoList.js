@@ -3,23 +3,22 @@ import ToDo from "./todo.js";
 import styles from "./todoList.module.css";
 
 class ToDoList extends Component {
-  constructor(props) {
-    super(props);
-  }
+  removeTask = (id) => {
+    this.props.onTaskRemoved(id);
+  };
 
-  removeTask = (id)=>{
-    this.props.onTaskRemoved(id)
-  }
-
-  getAllTodos(){
+  getAllTodos() {
     let widgets = [];
     this.props.todos.forEach((todo) => {
-      let currentId=todo.id;
-      widgets.push(<ToDo title={todo.name} currentId={currentId} isDone={this.removeTask}/>);
+      if (!isNaN(todo.id)){
+        widgets.push(
+          <ToDo title={todo.name} id={todo.id} isDone={this.removeTask} />
+        );
+      }
     });
     return widgets;
-  };
-  
+  }
+
   render() {
     return (
       <div className={styles.center}>
