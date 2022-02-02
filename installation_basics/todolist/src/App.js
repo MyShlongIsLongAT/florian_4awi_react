@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./components/cssreset.css";
 import Header from "./components/header.js";
 import TaskAdder from "./components/taskAdder.js";
 import ToDoList from "./components/todoList.js";
@@ -11,7 +12,6 @@ class App extends Component {
     this.state = {
       todos: [],
       existingIDs: [],
-      itemsRemoved:0
     };
   }
 
@@ -31,12 +31,8 @@ class App extends Component {
     if (generatedId > maxTodos) {
       for (let i = 0; i < this.state.existingIDs.length; i++) {
         if (isNaN(this.state.existingIDs[i].id)) {
-          generatedId = i + this.state.itemsRemoved;
+          generatedId = this.state.existingIDs[i].latestId;
           existingIdsCopy.splice(i, 1);
-
-          this.setState({
-            itemsRemoved: this.state.itemsRemoved+1,
-          });
           break;
         }
       }
@@ -49,6 +45,7 @@ class App extends Component {
     }
     let newId = {
       id: generatedId,
+      latestId: 0,
     };
     existingIdsCopy.push(newId);
     this.setState({
@@ -84,6 +81,7 @@ class App extends Component {
     for (let i = 0; i < existingIdsCopy.length; i++) {
       if (existingIdsCopy[i].id === id) {
         existingIdsCopy[i].id = "done";
+        existingIdsCopy[i].latestId = id;
       }
     }
 

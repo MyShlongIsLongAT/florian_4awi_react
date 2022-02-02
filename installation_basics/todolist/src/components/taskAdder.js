@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from './taskAdder.module.css';
 
 class TaskAdder extends Component {
   constructor(props) {
@@ -25,6 +26,8 @@ class TaskAdder extends Component {
           type="text"
           value={this.state.inputValue}
           onChange={this.handleChange}
+          className={styles.inputField}
+          placeholder="Insert Todo..."
         />
         <button onClick={this.addTask}>Save</button>
       </div>

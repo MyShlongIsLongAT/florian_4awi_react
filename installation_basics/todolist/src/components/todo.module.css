@@ -1,14 +1,22 @@
-.container{
-    display:flex;
-    justify-content: space-between;
-    padding:20px;
-    background-color:grey;
-    margin-top:5px;
-    -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.19);
-    -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.19);
-    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.19);
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: grey;
+  margin-top: 5px;
+  border-radius: 10px;
+  -webkit-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.19);
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.19);
 }
 
-.icons{
-    font-size:1.5em;
+.icons {
+  font-size: 1.5em;
+  margin-left:10px;
+}
+
+.todoText{
+    font-family: 'Lato', sans-serif;
 }

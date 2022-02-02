@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/*#2D3843*/
+
+.inputField {
+  width: 320px;
+  font-size: 0.875rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  border-radius: 8px;
+  padding: 12px 12px;
+  background-color: #1A2027;
+  color:white;
+}
+
+.inputField:hover{
+    background-color: #2D3843;
+}
