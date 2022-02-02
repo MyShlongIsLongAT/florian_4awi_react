@@ -23,15 +23,15 @@ class App extends Component {
     if (isNaN(this.state.existingIDs.length)) {
       generatedId = 1;
     } else {
-      generatedId = this.state.existingIDs.length + 1;
+      generatedId = this.state.existingIDs.length;
     }
 
     console.log(existingIdsCopy);
 
-    if (generatedId > maxTodos) {
+    if (generatedId > maxTodos-1) {
       for (let i = 0; i < this.state.existingIDs.length; i++) {
         if (isNaN(this.state.existingIDs[i].id)) {
-          generatedId = i + this.state.itemsRemoved;
+          generatedId = i;
           existingIdsCopy.splice(i, 1);
 
           this.setState({
@@ -40,15 +40,14 @@ class App extends Component {
           break;
         }
       }
-      if (generatedId > maxTodos) {
+      if (generatedId > maxTodos-1) {
         alert(
           "You have reached the maximum of ToDos \n Please delete some of your tasks if you want to continue!"
         );
         return;
       }
     }
-<<<<<<< HEAD
-=======
+
     let newId = {
       id: generatedId,
     };
@@ -57,7 +56,6 @@ class App extends Component {
       existingIDs: existingIdsCopy,
     });
     return generatedId;
->>>>>>> bb6a002f45186c033878bd36be238f70c0ba9537
   };
 
   addTask = (value) => {
