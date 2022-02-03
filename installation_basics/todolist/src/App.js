@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 import "./components/cssreset.css";
-import ErrorAlert from "./components/errorAlert";
 import Header from "./components/header.js";
 import TaskAdder from "./components/taskAdder.js";
 import ToDoList from "./components/todoList.js";
+import Alert from '@mui/material/Alert';
+
 
 class App extends Component {
   constructor(props) {
@@ -42,10 +43,7 @@ class App extends Component {
         }
       }
       if (generatedId > maxTodos - 1) {
-        <ErrorAlert message={this.state.errorMessages[0].errorMessageText} />;
-        alert(
-          "You have reached the maximum of ToDos \n Please delete some of your tasks if you want to continue!"
-        );
+        <Alert severity="info">This is an info alert — check it out!</Alert>
         return;
       }
     }

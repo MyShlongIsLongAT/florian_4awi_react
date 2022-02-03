@@ -47,7 +47,7 @@ class TaskAdder extends Component {
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
             className={styles.inputField}
-            placeholder="Insert Todo..."
+            placeholder="Insert Todo... (0-100 Characters)"
             maxLength="100"
           />
         </div>
