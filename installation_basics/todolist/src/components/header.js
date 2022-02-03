@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import styles from './header.modules.css';
 
 class Header extends Component {
-    state = {  }
     render() { 
         return (  
             <div>
-                <h1>ToDos</h1>
+                <div className={styles.headerText}>
+                    <h1>ToDoS</h1>
+                </div>
             </div>
         );
     }

@@ -11,14 +11,31 @@ class TaskAdder extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({
-      inputValue: event.target.value,
-    });
+    if (this.state.inputValue.length<100){
+      this.setState({
+        inputValue: event.target.value,
+      });
+    }
+    else if (this.state.inputValue.length<100 && event.keyCode === 8){
+      
+    }
   };
 
   addTask = () => {
-    this.props.onTaskAdded(this.state.inputValue);
+    if (this.state.inputValue !== "") {
+      this.props.onTaskAdded(this.state.inputValue);
+      this.setState({
+        inputValue: "",
+      });
+    }
   };
+
+  handleKeyDown = event => {
+    //it triggers by pressing the enter key
+  if (event.keyCode === 13) {
+    this.addTask();
+  }
+};
 
   render() {
     return (
@@ -28,12 +45,14 @@ class TaskAdder extends Component {
             type="text"
             value={this.state.inputValue}
             onChange={this.handleChange}
+            onKeyDown={this.handleKeyDown}
             className={styles.inputField}
             placeholder="Insert Todo..."
+            maxLength="100"
           />
         </div>
-        <div >
-          <Button onClick={this.addTask} variant="contained"className={styles.inputButton}>
+        <div className={styles.inputButton}>
+          <Button onClick={this.addTask} variant="contained">
             Add Todo
           </Button>
         </div>

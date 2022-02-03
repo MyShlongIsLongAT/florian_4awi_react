@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import "./components/cssreset.css";
+import ErrorAlert from "./components/errorAlert";
 import Header from "./components/header.js";
 import TaskAdder from "./components/taskAdder.js";
 import ToDoList from "./components/todoList.js";
@@ -12,6 +13,12 @@ class App extends Component {
     this.state = {
       todos: [],
       existingIDs: [],
+      errorMessages: [
+        {
+          errorMessageText:
+            "You have reached the maximum of ToDos. Please delete some of your tasks if you want to continue!",
+        },
+      ],
     };
   }
 
@@ -26,9 +33,7 @@ class App extends Component {
       generatedId = this.state.existingIDs.length;
     }
 
-    console.log(existingIdsCopy);
-
-    if (generatedId > maxTodos-1) {
+    if (generatedId > maxTodos - 1) {
       for (let i = 0; i < this.state.existingIDs.length; i++) {
         if (isNaN(this.state.existingIDs[i].id)) {
           generatedId = this.state.existingIDs[i].latestId;
@@ -36,7 +41,8 @@ class App extends Component {
           break;
         }
       }
-      if (generatedId > maxTodos-1) {
+      if (generatedId > maxTodos - 1) {
+        <ErrorAlert message={this.state.errorMessages[0].errorMessageText} />;
         alert(
           "You have reached the maximum of ToDos \n Please delete some of your tasks if you want to continue!"
         );
