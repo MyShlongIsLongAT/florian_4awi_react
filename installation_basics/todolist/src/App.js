@@ -20,6 +20,7 @@ class App extends Component {
             "You have reached the maximum of ToDos. Please delete some of your tasks if you want to continue!",
         },
       ],
+      maxLengthReached:false,
     };
   }
 
@@ -43,7 +44,9 @@ class App extends Component {
         }
       }
       if (generatedId > maxTodos - 1) {
-        <Alert severity="info">This is an info alert — check it out!</Alert>
+        this.setState({
+          maxLengthReached:true,
+        });
         return;
       }
     }
@@ -93,6 +96,7 @@ class App extends Component {
     this.setState({
       todos: currentTodos,
       existingIDs: existingIdsCopy,
+      maxLengthReached:false,
     });
   };
 
@@ -100,6 +104,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        {this.state.maxLengthReached &&
+          <div className={"alertContainer"}>
+            <Alert className={"Alert"} severity="info">{this.state.errorMessages[0].errorMessageText}</Alert>
+          </div>
+        }
         <TaskAdder onTaskAdded={this.addTask} />
         <ToDoList todos={this.state.todos} onTaskRemoved={this.removeTask} />
       </div>

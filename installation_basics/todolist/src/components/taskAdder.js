@@ -11,13 +11,18 @@ class TaskAdder extends Component {
   }
 
   handleChange = (event) => {
-    if (this.state.inputValue.length<100){
+    if (this.state.inputValue.length<=100){
       this.setState({
         inputValue: event.target.value,
       });
     }
     else if (this.state.inputValue.length<100 && event.keyCode === 8){
-      
+      this.setState({
+        inputValue: event.target.value,
+      });
+    }
+    else{
+      return;
     }
   };
 
@@ -47,6 +52,7 @@ class TaskAdder extends Component {
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
             className={styles.inputField}
+            classname={this.state.msg >= 100 ? "borderRed":""}
             placeholder="Insert Todo... (0-100 Characters)"
             maxLength="100"
           />

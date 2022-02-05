@@ -1,5 +1,14 @@
-.App{
-  height:100vh;
-  text-align: center;
+body{
   background-color:#2D3843;
+}
+
+.App{
+  text-align: center;
+}
+
+.alertContainer{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }

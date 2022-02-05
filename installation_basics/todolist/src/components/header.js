@@ -6,7 +6,7 @@ class Header extends Component {
         return (  
             <div>
                 <div className={styles.headerText}>
-                    <h1>ToDoS</h1>
+                    <h1>ToDos</h1>
                 </div>
             </div>
         );
