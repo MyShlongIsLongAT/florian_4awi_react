@@ -11,6 +11,10 @@ class TaskAdder extends Component {
   }
 
   handleChange = (event) => {
+    if (event.target.value.length > 100){
+      alert("kek")
+    }
+
     if (this.state.inputValue.length<=100){
       this.setState({
         inputValue: event.target.value,
@@ -20,9 +24,6 @@ class TaskAdder extends Component {
       this.setState({
         inputValue: event.target.value,
       });
-    }
-    else{
-      return;
     }
   };
 
@@ -53,7 +54,6 @@ class TaskAdder extends Component {
             onKeyDown={this.handleKeyDown}
             className={styles.inputField}
             placeholder="Insert Todo... (0-100 Characters)"
-            maxLength="100"
           />
         </div>
         <div className={styles.inputButton}>
